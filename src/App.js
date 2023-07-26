@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import {FiChevronDown} from 'react-icons/fi';
 import {TiArrowUnsorted} from 'react-icons/ti';
+import { useState } from 'react';
 
 function App() {
   const data=[
@@ -37,6 +38,9 @@ function App() {
       status:"Send Now"
     },
   ];
+
+  const [showFilter, setshowFilter] = useState(false);
+
   return (
     <div className="bg-white ">
 
@@ -45,7 +49,7 @@ function App() {
 <div>
     <Sidebar/>
 </div>
-    <div className='mt-10 w-full' >
+    <div className='pt-10 w-full bg-gray-100'>
      <Header/> 
          <div className=''>
           <div className=' grid grid-cols-4 pt-16 xl:pl-44 lg:pl-24 md:pl-14 sm:ml-16  '>
@@ -95,10 +99,23 @@ function App() {
           <div className='flex justify-between  pt-24 xl:pl-44 xl:pr-56 lg:pl-24 lg:pr-32 md:pl-14 sm:ml-16'>
               <div  className='font-bold text-lg text-gray-700'>Follow up</div>
               <div className=' flex flex-row'>
-              <div className='text-sm font-bold font-sans text-gray-500'><span className='bg-gray-100 p-1 rounded text-gray-400 mr-1 font-sans font-semibold'>Filter:</span>Send now(176)</div>
+              <div className='text-sm font-bold font-sans text-gray-500 cursor-pointer'><span className='bg-gray-100 p-1 rounded text-gray-400 mr-1 font-sans font-semibold' onClick={()=>{setshowFilter(!showFilter); console.log("podaa")}}>Filter:</span>Send now(176)</div>
               <FiChevronDown className='text-gray-600 ml-1' size={20}/>
+             { showFilter && (
+              <div className='absolute cursor-pointer bg-white border border-gray-300  shadow-lg rounded-lg mt-6 py-4 px-2'>
+                <div className='flex flex-col'>
+                  <h2 className='pt-2 px-4 text-slate-500 text-base font-normal'>All orders <span className='rounded-full ml-2 px-2 py-[0.5] bg-gray-300 text-semibold text-gray-600'>16</span></h2>
+                  <h2 className='pt-3 px-4 text-slate-500 text-base font-normal'>Ignored <span className='rounded-full ml-2 px-2 py-[0.5] bg-gray-300 text-semibold text-gray-600'>4</span></h2>
+                  <h2 className='pt-3 px-4 text-slate-500 text-base font-normal'>Scheduled <span className='rounded-full ml-2 px-2 py-[0.5] bg-gray-300 text-semibold text-gray-600'>0</span></h2>
+                  <h2 className='pt-3 px-4 text-slate-500 text-base font-normal'>Send Now <span className='rounded-full ml-2 px-2 py-[0.5] bg-gray-300 text-semibold text-gray-600'>6</span></h2>
+                  <h2 className='pt-3 px-4 text-slate-500 text-base font-normal'>Completed <span className='rounded-full ml-2 px-2 py-[0.5] bg-gray-300 text-semibold text-gray-600'>6</span></h2>
+                  </div>
+                <div/> </div> )
+                }
               </div>
+
           </div>
+        
 
 
           <div className='w-full  flex place-content-center grid-rows-4 px-12 justify-evenly  pt-12  '>  
