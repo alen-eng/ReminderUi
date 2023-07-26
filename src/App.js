@@ -49,7 +49,7 @@ function App() {
 <div>
     <Sidebar/>
 </div>
-    <div className='pt-10 w-full bg-gray-100'>
+    <div className='pt-10 w-full'>
      <Header/> 
          <div className=''>
           <div className=' grid grid-cols-4 pt-16 xl:pl-44 lg:pl-24 md:pl-14 sm:ml-16  '>
